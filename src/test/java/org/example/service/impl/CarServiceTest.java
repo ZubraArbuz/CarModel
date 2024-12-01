@@ -1,6 +1,7 @@
 package org.example.service.impl;
 
 import org.example.dto.CarModelDTO;
+import org.example.repository.CarEntityRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,9 +14,10 @@ class CarServiceTest {
 
     private CarService carService;
 
+    CarEntityRepository carEntityRepository = new CarEntityRepository();
     @BeforeEach
     void setUp() {
-        carService = new CarService();
+        carService = new CarService(carEntityRepository);
     }
 
     @Test

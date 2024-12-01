@@ -1,14 +1,47 @@
 package org.example.service.impl;
 
+import org.example.repository.CarEntityRepository;
+import org.example.entity.*;
 import org.example.dto.CarModelDTO;
 import org.example.service.CarModelService;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class CarService implements CarModelService {
 
+    private CarEntityRepository carEntityRepository;
+
     private final CarModelService carModelService = new FileSystemCarModelService();
+
+    public CarService(CarEntityRepository carEntityRepository) {
+        this.carEntityRepository = carEntityRepository;
+    }
+
+    public void createCar() {
+        try {
+            CarModelEntity carModelEntity = new CarModelEntity(3, "Toyota", "Camry", "Japan", "JP");
+            DealerEntity dealerEntity = new DealerEntity(2, "Dealer2", new ArrayList<>());
+            CarEntity carEntity = new CarEntity(10, carModelEntity, dealerEntity, "old", "basic", "red", BigDecimal.valueOf(25000));
+            carEntityRepository.create(carEntity);
+            System.out.println("Car entity created successfully!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error creating car entity: " + e.getMessage());
+        }
+    }
+
+    public void deleteCar() {
+        try {
+
+            carEntityRepository.delete(9);
+            System.out.println("Car entity created successfully!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error creating car entity: " + e.getMessage());
+        }
+    }
 
     @Override
     public List<CarModelDTO> load() {
