@@ -25,19 +25,58 @@ public class CarDTO {
         this.price = price;
     }
 
-    public Integer getId() { return id; }
-    public CarModelDTO getModel() { return model; }
-    public DealerCenter getDealerCenter() { return dealerCenter; }
-    public CarStatus getStatus() { return status; }
-    public String getConfiguration() { return configuration; }
-    public String getColor() { return color; }
-    public BigDecimal getPrice() { return price; }
+    public Integer getId() {
+        return id;
+    }
 
-    public void setStatus(CarStatus status) { this.status = status; }
-    public void setConfiguration(String configuration) { this.configuration = configuration; }
-    public void setColor(String color) { this.color = color; }
-    public void setPrice(BigDecimal price) { this.price = price; }
-    public void setDealerCenter(DealerCenter dealerCenter) { this.dealerCenter = dealerCenter; }
+    public CarModelDTO getModel() {
+        return model;
+    }
+
+    public DealerCenter getDealerCenter() {
+        return dealerCenter;
+    }
+
+    public CarStatus getStatus() {
+        return status;
+    }
+
+    public String getConfiguration() {
+        return configuration;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setStatus(CarStatus status) {
+        this.status = status;
+    }
+
+    public void setConfiguration(String configuration) {
+        this.configuration = configuration;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setDealerCenter(DealerCenter dealerCenter) {
+        this.dealerCenter = dealerCenter;
+    }
+
+    public boolean isAvailableForShowroom() {
+        return this.status == CarStatus.AVAILABLE;
+    }
+
     @Override
     public String toString() {
         return "CarDTO{" +
