@@ -34,7 +34,7 @@ public class DealerCenterPerformanceTest {
     }
 
     private static void processCarsMultiThread(DealerCenter dealerCenter) throws InterruptedException {
-        int numThreads = 4; // Количество потоков
+        int numThreads = 4;
         int carsPerThread = dealerCenter.getCars().size() / numThreads;
         ExecutorService executorService = Executors.newFixedThreadPool(numThreads);
         List<Callable<Void>> tasks = new ArrayList<>();
