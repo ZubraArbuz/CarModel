@@ -27,8 +27,8 @@ public class DealerCenterTest {
     @Test
     public void testProcessCarsInMultipleThreads() throws InterruptedException {
         List<CarDTO> carsToProcess = dealerCenter.getCars();
-        Thread thread1 = new Thread(() -> dealerCenter.processCars(carsToProcess.subList(0, 2)));
-        Thread thread2 = new Thread(() -> dealerCenter.processCars(carsToProcess.subList(2, 3)));
+        Thread thread1 = new Thread(() -> dealerCenter.processCarsInThreads(carsToProcess.subList(0, 2)));
+        Thread thread2 = new Thread(() -> dealerCenter.processCarsInThreads(carsToProcess.subList(2, 3)));
         thread1.start();
         thread2.start();
         thread1.join();
@@ -36,4 +36,5 @@ public class DealerCenterTest {
         assertEquals(2, dealerCenter.getShowroomCars().size());
         assertTrue(dealerCenter.getShowroomCars().stream().anyMatch(car -> car.getModel().getModelName().equals("Camry")));
     }
+
 }
